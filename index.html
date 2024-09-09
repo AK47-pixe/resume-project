@@ -3,44 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume</title>
+  <title>Dynamic Resume Builder</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="resume">
-    <section class="personal-info">
-      <img src="profile.jpg" alt="Profile Picture">
-      <h1>Your Name</h1>
-      <p>Contact Details: email@example.com | +1234567890</p>
-    </section>
-    <section class="education">
+  <div class="container">
+    <form id="resume-form">
+      <h2>Personal Information</h2>
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      
+      <label for="profile-picture">Profile Picture URL:</label>
+      <input type="url" id="profile-picture" required>
+      
       <h2>Education</h2>
-      <ul>
-        <li>
-          <h3>Degree Name</h3>
-          <p>University Name</p>
-          <p>Year of Graduation</p>
-        </li>
-      </ul>
-    </section>
-    <section class="skills">
+      <label for="education">Education:</label>
+      <input type="text" id="education" required>
+      
       <h2>Skills</h2>
-      <ul>
-        <li>Skill 1</li>
-        <li>Skill 2</li>
-        <li>Skill 3</li>
-      </ul>
-    </section>
-    <section class="work-experience">
+      <label for="skills">Skills (comma-separated):</label>
+      <input type="text" id="skills" required>
+      
       <h2>Work Experience</h2>
-      <ul>
-        <li>
-          <h3>Job Title</h3>
-          <p>Company Name</p>
-          <p>Years Worked</p>
-        </li>
-      </ul>
-    </section>
+      <label for="work-experience">Work Experience:</label>
+      <input type="text" id="work-experience" required>
+      
+      <button type="submit">Generate Resume</button>
+    </form>
+    
+    <div id="resume" class="resume">
+      <!-- Generated resume will appear here -->
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
