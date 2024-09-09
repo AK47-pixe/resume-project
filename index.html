@@ -1,41 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Resume Builder</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <form id="resume-form">
-            <h1>Resume Builder</h1>
-            <label for="name">Name:</label>
-            <input type="text" id="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" required>
-
-            <label for="profile-picture">Profile Picture:</label>
-            <input type="file" id="profile-picture" accept="image/*">
-
-            <label for="education">Education:</label>
-            <input type="text" id="education" required>
-
-            <label for="skills">Skills (comma separated):</label>
-            <input type="text" id="skills" required>
-
-            <label for="work-experience">Work Experience:</label>
-            <input type="text" id="work-experience" required>
-
-            <label for="username">Username:</label>
-            <input type="text" id="username" required>
-
-            <button type="submit">Generate Resume</button>
-        </form>
-        <div id="resume"></div>
-        <button id="download-pdf">Download as PDF</button>
+  <form id="resume-form">
+    <h1>Resume Builder</h1>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Name" required>
     </div>
-    <script src="script.js"></script>
+    <div class="form-group">
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Email" required>
+    </div>
+    <div class="form-group">
+      <label for="profile-picture">Profile Picture:</label>
+      <input type="file" id="profile-picture" accept="image/*">
+    </div>
+    <div class="form-group">
+      <label for="education">Education:</label>
+      <div id="education-section">
+        <div class="education-entry">
+          <input type="text" class="education-course" placeholder="Course" required>
+          <input type="text" class="education-year" placeholder="Passing Year" required>
+          <input type="text" class="education-institution" placeholder="Institution Name" required>
+        </div>
+      </div>
+      <button type="button" id="add-education">Add More Education</button>
+    </div>
+    <div class="form-group">
+      <label for="skills">Skills:</label>
+      <input type="text" id="skills" placeholder="Skills (comma separated)" required>
+    </div>
+    <div class="form-group">
+      <label for="work-experience">Work Experience:</label>
+      <div id="work-experience-section">
+        <div class="work-experience-entry">
+          <input type="text" class="work-experience-position" placeholder="Position" required>
+          <input type="text" class="work-experience-organization" placeholder="Organization Name" required>
+          <input type="text" class="work-experience-years" placeholder="Active Years (in numbers)" required>
+        </div>
+      </div>
+      <button type="button" id="add-work-experience">Add More Work Experience</button>
+    </div>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" placeholder="Username" required>
+    </div>
+    <button type="submit">Generate Resume</button>
+  </form>
+
+  <div id="resume"></div>
+  <button id="download-pdf" style="display:none;">Download as PDF</button>
+
+  <script src="script.js"></script>
 </body>
 </html>

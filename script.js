@@ -1,99 +1,58 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var _this = this;
 document.addEventListener("DOMContentLoaded", function () {
+    var _a, _b;
     var form = document.getElementById("resume-form");
     var resumeContainer = document.getElementById("resume");
-    form.addEventListener("submit", function (event) { return __awaiter(_this, void 0, void 0, function () {
-        var name, email, profilePictureInput, education, skills, workExperience, username, profilePictureURL, file, resumeData, response, data, resumeLink;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    event.preventDefault();
-                    name = document.getElementById("name").value;
-                    email = document.getElementById("email").value;
-                    profilePictureInput = document.getElementById("profile-picture");
-                    education = document.getElementById("education").value;
-                    skills = document.getElementById("skills").value.split(",");
-                    workExperience = document.getElementById("work-experience").value;
-                    username = document.getElementById("username").value;
-                    profilePictureURL = "";
-                    if (profilePictureInput.files && profilePictureInput.files.length > 0) {
-                        file = profilePictureInput.files[0];
-                        profilePictureURL = URL.createObjectURL(file);
-                    }
-                    resumeData = {
-                        name: name,
-                        email: email,
-                        profilePictureURL: profilePictureURL,
-                        education: education,
-                        skills: skills,
-                        workExperience: workExperience
-                    };
-                    // Generate the resume
-                    resumeContainer.innerHTML = "\n      <section class=\"personal-info\">\n        <img src=\"".concat(profilePictureURL, "\" alt=\"Profile Picture\">\n        <h1 contenteditable=\"true\" class=\"editable\">").concat(name, "</h1>\n        <p contenteditable=\"true\" class=\"editable\">Contact Details: ").concat(email, "</p>\n      </section>\n      <section class=\"education\">\n        <h2>Education</h2>\n        <p contenteditable=\"true\" class=\"editable\">").concat(education, "</p>\n      </section>\n      <section class=\"skills\">\n        <h2>Skills</h2>\n        <ul contenteditable=\"true\" class=\"editable\">\n          ").concat(skills.map(function (skill) { return "<li>".concat(skill.trim(), "</li>"); }).join(''), "\n        </ul>\n      </section>\n      <section class=\"work-experience\">\n        <h2>Work Experience</h2>\n        <p contenteditable=\"true\" class=\"editable\">").concat(workExperience, "</p>\n      </section>\n    ");
-                    return [4 /*yield*/, fetch('/api/generateURL', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ username: username, resume: resumeData })
-                        })];
-                case 1:
-                    response = _a.sent();
-                    return [4 /*yield*/, response.json()];
-                case 2:
-                    data = _a.sent();
-                    resumeLink = document.createElement('p');
-                    resumeLink.innerHTML = "Your resume link: <a href=\"".concat(data.url, "\" target=\"_blank\">").concat(data.url, "</a>");
-                    resumeContainer.appendChild(resumeLink);
-                    return [2 /*return*/];
-            }
-        });
-    }); });
     var downloadButton = document.getElementById("download-pdf");
+    // Function to handle form submission and resume generation
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+        var email = document.getElementById("email").value;
+        var profilePictureInput = document.getElementById("profile-picture");
+        var skills = document.getElementById("skills").value.split(",");
+        var username = document.getElementById("username").value;
+        // Collect education entries
+        var educationEntries = Array.from(document.querySelectorAll(".education-entry")).map(function (entry) { return ({
+            course: entry.querySelector(".education-course").value,
+            year: entry.querySelector(".education-year").value,
+            institution: entry.querySelector(".education-institution").value,
+        }); });
+        // Collect work experience entries
+        var workExperienceEntries = Array.from(document.querySelectorAll(".work-experience-entry")).map(function (entry) { return ({
+            position: entry.querySelector(".work-experience-position").value,
+            organization: entry.querySelector(".work-experience-organization").value,
+            years: entry.querySelector(".work-experience-years").value,
+        }); });
+        // Handle profile picture
+        var profilePictureURL = "";
+        if (profilePictureInput.files && profilePictureInput.files.length > 0) {
+            var file = profilePictureInput.files[0];
+            profilePictureURL = URL.createObjectURL(file);
+        }
+        // Generate the resume content
+        resumeContainer.innerHTML = "\n      <section class=\"personal-info printable\">\n        <img src=\"".concat(profilePictureURL, "\" alt=\"Profile Picture\" style=\"width:100px;height:100px;\">\n        <h1 contenteditable=\"true\" class=\"editable\">").concat(name, "</h1>\n        <p contenteditable=\"true\" class=\"editable\">Contact Details: ").concat(phone, ", ").concat(email, "</p>\n      </section>\n      <section class=\"education printable\">\n        <h2>Education</h2>\n        ").concat(educationEntries.map(function (entry) { return "\n          <div>\n            <strong>".concat(entry.course, "</strong> (").concat(entry.year, ") at ").concat(entry.institution, "\n          </div>\n        "); }).join(''), "\n      </section>\n      <section class=\"skills printable\">\n        <h2>Skills</h2>\n        <ul contenteditable=\"true\" class=\"editable\">\n          ").concat(skills.map(function (skill) { return "<li>".concat(skill.trim(), "</li>"); }).join(''), "\n        </ul>\n      </section>\n      <section class=\"work-experience printable\">\n        <h2>Work Experience</h2>\n        ").concat(workExperienceEntries.map(function (entry) { return "\n          <div>\n            <strong>".concat(entry.position, "</strong>, ").concat(entry.organization, " (").concat(entry.years, ")\n          </div>\n        "); }).join(''), "\n      </section>\n    ");
+        // Make the download button visible
+        downloadButton.style.display = "block";
+    });
+    // Download PDF functionality
     downloadButton.addEventListener("click", function () {
-        var resumeElement = resumeContainer.innerHTML;
-        var blob = new Blob([resumeElement], { type: 'application/pdf' });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = 'resume.pdf';
-        a.click();
-        URL.revokeObjectURL(url);
+        // Trigger print dialog
+        window.print();
+    });
+    // Add event listeners for dynamically adding new entries
+    (_a = document.getElementById("add-education")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
+        var educationSection = document.getElementById("education-section");
+        var newEntry = document.createElement("div");
+        newEntry.classList.add("education-entry");
+        newEntry.innerHTML = "\n      <input type=\"text\" class=\"education-course\" placeholder=\"Course\" required>\n      <input type=\"text\" class=\"education-year\" placeholder=\"Passing Year\" required>\n      <input type=\"text\" class=\"education-institution\" placeholder=\"Institution Name\" required>\n    ";
+        educationSection.appendChild(newEntry);
+    });
+    (_b = document.getElementById("add-work-experience")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function () {
+        var workExperienceSection = document.getElementById("work-experience-section");
+        var newEntry = document.createElement("div");
+        newEntry.classList.add("work-experience-entry");
+        newEntry.innerHTML = "\n      <input type=\"text\" class=\"work-experience-position\" placeholder=\"Position\" required>\n      <input type=\"text\" class=\"work-experience-organization\" placeholder=\"Organization Name\" required>\n      <input type=\"text\" class=\"work-experience-years\" placeholder=\"Active Years (in numbers)\" required>\n    ";
+        workExperienceSection.appendChild(newEntry);
     });
 });

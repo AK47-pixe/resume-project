@@ -1,42 +1,48 @@
+/* styles.css */
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
+  line-height: 1.6;
+  margin: 0;
   padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  color: #4CAF50; /* Green color */
+  text-align: center;
+  color: #333;
 }
 
-label {
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
   display: block;
-  margin: 10px 0 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="file"],
-button {
+.form-group input, .form-group textarea {
   width: 100%;
   padding: 10px;
-  margin: 5px 0 20px;
-  border: 1px solid #ccc;
   border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
 }
 
 button {
-  background-color: #4CAF50; /* Green color */
-  color: white;
+  display: block;
+  width: 100%;
+  padding: 10px;
   border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -46,23 +52,56 @@ button:hover {
 
 #resume {
   margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 
 #resume img {
-  max-width: 150px;
   border-radius: 50%;
+  margin-bottom: 15px;
 }
 
-.editable {
-  border: 1px dashed #4CAF50; /* Green border */
-  padding: 5px;
-  border-radius: 5px;
+#resume h1, #resume h2 {
+  color: #333;
 }
 
-section {
+#resume section {
   margin-bottom: 20px;
 }
 
-section h2 {
-  color: #4CAF50; /* Green color */
+#education-section, #work-experience-section {
+  margin-bottom: 20px;
+}
+
+.education-entry, .work-experience-entry {
+  margin-bottom: 10px;
+}
+
+@media print {
+  /* Hide everything except the resume when printing */
+  body * {
+    visibility: hidden;
+  }
+
+  #resume, #resume * {
+    visibility: visible;
+  }
+
+  #resume {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* Hide page numbers, URLs, and date */
+  @page {
+    margin: 0;
+  }
 }
