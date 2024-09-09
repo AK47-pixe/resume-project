@@ -7,16 +7,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const name = (document.getElementById("name") as HTMLInputElement).value;
     const email = (document.getElementById("email") as HTMLInputElement).value;
-    const profilePicture = (document.getElementById("profile-picture") as HTMLInputElement).value;
+    const profilePictureInput = document.getElementById("profile-picture") as HTMLInputElement;
     const education = (document.getElementById("education") as HTMLInputElement).value;
     const skills = (document.getElementById("skills") as HTMLInputElement).value.split(",");
     const workExperience = (document.getElementById("work-experience") as HTMLInputElement).value;
     const username = (document.getElementById("username") as HTMLInputElement).value;
 
+    let profilePictureURL = "";
+
+    if (profilePictureInput.files && profilePictureInput.files.length > 0) {
+      const file = profilePictureInput.files[0];
+      profilePictureURL = URL.createObjectURL(file);
+    }
+
     const resumeData = {
       name,
       email,
-      profilePicture,
+      profilePictureURL,
       education,
       skills,
       workExperience
@@ -25,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Generate the resume
     resumeContainer.innerHTML = `
       <section class="personal-info">
-        <img src="${profilePicture}" alt="Profile Picture">
+        <img src="${profilePictureURL}" alt="Profile Picture">
         <h1 contenteditable="true" class="editable">${name}</h1>
         <p contenteditable="true" class="editable">Contact Details: ${email}</p>
       </section>

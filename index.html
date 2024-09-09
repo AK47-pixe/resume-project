@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Resume Builder</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Resume Builder</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <form id="resume-form">
-      <h2>Personal Information</h2>
-      <label for="username">Username:</label>
-      <input type="text" id="username" required>
-      
-      <label for="name">Name:</label>
-      <input type="text" id="name" required>
-      
-      <label for="email">Email:</label>
-      <input type="email" id="email" required>
-      
-      <label for="profile-picture">Profile Picture URL:</label>
-      <input type="url" id="profile-picture" required>
-      
-      <h2>Education</h2>
-      <label for="education">Education:</label>
-      <input type="text" id="education" required>
-      
-      <h2>Skills</h2>
-      <label for="skills">Skills (comma-separated):</label>
-      <input type="text" id="skills" required>
-      
-      <h2>Work Experience</h2>
-      <label for="work-experience">Work Experience:</label>
-      <input type="text" id="work-experience" required>
-      
-      <button type="submit">Generate Resume</button>
-    </form>
-    
-    <div id="resume" class="resume">
-      <!-- Generated resume will appear here -->
-    </div>
+    <div class="container">
+        <form id="resume-form">
+            <h1>Resume Builder</h1>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
 
-    <button id="download-pdf">Download as PDF</button>
-  </div>
-  <script src="script.js"></script>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="profile-picture">Profile Picture:</label>
+            <input type="file" id="profile-picture" accept="image/*">
+
+            <label for="education">Education:</label>
+            <input type="text" id="education" required>
+
+            <label for="skills">Skills (comma separated):</label>
+            <input type="text" id="skills" required>
+
+            <label for="work-experience">Work Experience:</label>
+            <input type="text" id="work-experience" required>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+
+            <button type="submit">Generate Resume</button>
+        </form>
+        <div id="resume"></div>
+        <button id="download-pdf">Download as PDF</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

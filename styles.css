@@ -1,68 +1,68 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
+  background-color: #f0f0f0;
+  color: #333;
 }
 
 .container {
   max-width: 800px;
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 20px;
-  background: #fff;
+  background-color: #ffffff;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+h1 {
+  color: #4CAF50; /* Green color */
 }
 
 label {
-  margin-top: 10px;
+  display: block;
+  margin: 10px 0 5px;
 }
 
-input {
-  margin-bottom: 10px;
+input[type="text"],
+input[type="email"],
+input[type="file"],
+button {
+  width: 100%;
   padding: 10px;
-  font-size: 16px;
+  margin: 5px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 button {
-  padding: 10px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #4CAF50; /* Green color */
+  color: white;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #45a049;
 }
 
-.resume {
+#resume {
   margin-top: 20px;
-  padding: 20px;
-  background: #e9ecef;
 }
 
-.resume section {
-  margin-bottom: 20px;
-}
-
-.resume img {
-  width: 100px;
-  height: 100px;
+#resume img {
+  max-width: 150px;
   border-radius: 50%;
 }
 
 .editable {
-  border: 1px dashed #007bff;
+  border: 1px dashed #4CAF50; /* Green border */
   padding: 5px;
+  border-radius: 5px;
 }
 
-.editable:focus {
-  outline: none;
-  background-color: #eef;
+section {
+  margin-bottom: 20px;
+}
+
+section h2 {
+  color: #4CAF50; /* Green color */
 }
